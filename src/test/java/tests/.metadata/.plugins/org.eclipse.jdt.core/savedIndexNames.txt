@@ -1,0 +1,1 @@
+INDEX VERSION 1.126+C:\aditya\ECLIPSE WORK SPACE\AdityaOverstock\src\test\java\tests\.metadata\.plugins\org.eclipse.jdt.core
