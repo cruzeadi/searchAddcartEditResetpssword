@@ -1,8 +1,7 @@
 package tests;
 
 import java.util.List;
-
-
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -27,13 +26,23 @@ public class SearchAddEditTest extends BaseTest{
 	CartPage cartPage;
 	ForgotPasswordPage forgotPasswordPage;
 	
-	@Test(enabled=true)
-	public void cartTest(){
+	@Test(enabled=false)
+	public void cartTest() throws InterruptedException{
 		
 		//Login
-		landingPage = new LandingPage(driver);
-		homePage = landingPage.signIn(Configuration.getEmail(), Configuration.getCurrentOverStockPassword());
 		
+		landingPage = new LandingPage(driver);
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//div[@class='cb_close']")).click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		homePage = landingPage.signIn(Configuration.getEmail(), Configuration.getCurrentOverStockPassword());
 		String dataFilePath = Configuration.getFilePath();
 		String sheetName = Configuration.getSheetName();
 		List<Object> searchTerms = ExcelUtil.getAllValuesForHeaderInAColumn(dataFilePath, sheetName, "Search term");
@@ -63,11 +72,20 @@ public class SearchAddEditTest extends BaseTest{
 		landingPage = cartPage.signOut();
 	}
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void changePassword() throws InterruptedException{
 		
-		landingPage = new LandingPage(driver);
-				
+		landingPage = new LandingPage(driver);	
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//div[@class='cb_close']")).click();
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		forgotPasswordPage = landingPage.clickOnForgotPasswordLink();
 		forgotPasswordPage.resetPasswordForEmail(Configuration.getEmail());
 		driver.get("https://mail.google.com");
