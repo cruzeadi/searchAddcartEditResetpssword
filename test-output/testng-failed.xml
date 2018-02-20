@@ -5,8 +5,8 @@
     <classes>
       <class name="tests.SearchAddEditTest">
         <methods>
+          <include name="cartTest"/>
           <include name="initialSetUp"/>
-          <include name="changePassword"/>
           <include name="cleanup"/>
           <include name="startUp"/>
         </methods>

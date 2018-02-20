@@ -26,14 +26,12 @@ public class SearchAddEditTest extends BaseTest{
 	CartPage cartPage;
 	ForgotPasswordPage forgotPasswordPage;
 	
-	@Test(enabled=false)
+	@Test(enabled=true)
 	public void cartTest() throws InterruptedException{
 		
 		//Login
 		
 		landingPage = new LandingPage(driver);
-		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//div[@class='cb_close']")).click();
 		try {
@@ -72,12 +70,12 @@ public class SearchAddEditTest extends BaseTest{
 		landingPage = cartPage.signOut();
 	}
 	
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void changePassword() throws InterruptedException{
 		
 		landingPage = new LandingPage(driver);	
 		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
 		Thread.sleep(5000);
 		driver.findElement(By.xpath("//div[@class='cb_close']")).click();
 		try {
